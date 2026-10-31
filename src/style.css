@@ -1653,19 +1653,18 @@ button {
 .video-frame {
   position: relative;
   width: 100%;
-  aspect-ratio: 9 / 16;
   max-height: 75vh;
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   border-radius: 8px;
   background: #000000;
 }
 
-.video-frame iframe {
-  position: absolute;
-  inset: 0;
+.video-frame video {
+  display: block;
   width: 100%;
   height: 100%;
-  border: 0;
+  object-fit: contain;
 }
 
 /* ПРИХОВУВАННЯ МОБІЛЬНИХ ЗАГОЛОВКІВ */
@@ -1878,3 +1877,336 @@ button {
   }
 }
 
+/* =========================================
+   СТОРІНКА ЗАПИСУ НА ПРИЙОМ
+========================================= */
+
+.booking-page {
+  background: var(--color-background, #F7F8F6);
+  min-height: 60vh;
+}
+
+.booking-container {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Заголовок сторінки */
+
+.booking-intro {
+  padding: 75px 0 55px;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border, #E5E9E5);
+}
+
+.booking-eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: var(--color-primary, #39745C);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.booking-intro h1 {
+  margin: 0 0 20px;
+  color: var(--color-heading, #26352F);
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.booking-intro p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--color-text, #626B65);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Основний вміст */
+
+.booking-content {
+  padding: 55px 0 85px;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.booking-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.booking-card,
+.booking-map-card {
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid var(--color-border, #E5E9E5);
+  border-radius: 14px;
+  box-shadow: 0 5px 24px rgba(32, 55, 43, 0.04);
+}
+
+.booking-card h2,
+.booking-map-card h2 {
+  margin: 0 0 26px;
+  color: var(--color-heading, #26352F);
+  font-family: 'Manrope', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.booking-detail {
+  display: flex;
+  gap: 17px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--color-border, #E5E9E5);
+}
+
+.booking-detail:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.booking-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-primary, #39745C);
+  background: #EDF4EF;
+  border-radius: 50%;
+  font-size: 23px;
+}
+
+.booking-detail h3 {
+  margin: 0 0 7px;
+  color: var(--color-heading, #26352F);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.booking-detail p,
+.booking-detail a {
+  display: block;
+  margin: 0;
+  color: var(--color-text, #626B65);
+  font-size: 15px;
+  line-height: 1.7;
+  text-decoration: none;
+}
+
+.booking-detail a:hover {
+  color: var(--color-primary, #39745C);
+}
+
+/* Соціальні мережі */
+
+.booking-social > p {
+  margin: -12px 0 22px;
+  color: var(--color-text, #626B65);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.booking-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.booking-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 17px;
+  color: var(--color-primary, #39745C);
+  background: #EDF4EF;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.booking-social-links a:hover {
+  color: #FFFFFF;
+  background: var(--color-primary, #39745C);
+}
+
+/* Карта */
+
+.booking-map-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-map-card > p {
+  margin: -12px 0 22px;
+  color: var(--color-text, #626B65);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.booking-map {
+  flex: 1;
+  min-height: 390px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #EDF0ED;
+}
+
+.booking-map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 390px;
+  border: 0;
+}
+
+.booking-map-link {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 20px;
+  color: var(--color-primary, #39745C);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.booking-map-link:hover {
+  text-decoration: underline;
+}
+
+/* Адаптивність */
+
+@media (max-width: 850px) {
+  .booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-map {
+    min-height: 350px;
+  }
+
+  .booking-map iframe {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-container {
+    width: calc(100% - 32px);
+  }
+
+  .booking-intro {
+    padding: 48px 0 38px;
+  }
+
+  .booking-intro p {
+    font-size: 15px;
+  }
+
+  .booking-content {
+    padding: 30px 0 55px;
+  }
+
+  .booking-card,
+  .booking-map-card {
+    padding: 22px 18px;
+    border-radius: 11px;
+  }
+
+  .booking-card h2,
+  .booking-map-card h2 {
+    font-size: 19px;
+  }
+
+  .booking-detail {
+    gap: 13px;
+  }
+
+  .booking-map {
+    min-height: 300px;
+  }
+
+  .booking-map iframe {
+    min-height: 300px;
+  }
+}
+
+/* Кнопка відеоінструкції */
+
+.booking-video-button {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 28px;
+  padding: 22px 24px;
+  color: #FFFFFF;
+  background: var(--color-primary, #39745C);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.booking-video-button:hover {
+  background: #2D604A;
+  transform: translateY(-2px);
+}
+
+.booking-video-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary, #39745C);
+  background: #FFFFFF;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.booking-video-button strong,
+.booking-video-button small {
+  display: block;
+}
+
+.booking-video-button strong {
+  margin-bottom: 5px;
+  font-size: 17px;
+}
+
+.booking-video-button small {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+}
+
+/* Клікабельні контактні блоки */
+
+.booking-detail-link {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.booking-detail-link:hover {
+  background: #F5F8F5;
+}
+
+.booking-detail-link:hover h3,
+.booking-detail-link:hover p {
+  color: var(--color-primary, #39745C);
+}

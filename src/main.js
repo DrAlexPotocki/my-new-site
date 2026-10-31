@@ -1,4 +1,5 @@
 import './style.css'
+import { siteData } from './data/siteData.js'
 
 async function loadComponent(path) {
   const response = await fetch(path)
@@ -434,7 +435,7 @@ document.querySelector('#app').innerHTML = `
         Зв’яжіться зі мною, щоб узгодити зручний час.
       </p>
 
-      <a href="tel:+380666488763" class="contact-button">
+      <a href="${siteData.contact.phoneLink}" class="contact-button">
         Записатися
       </a>
     </div>
@@ -447,15 +448,15 @@ document.querySelector('#app').innerHTML = `
       </p>
 
       <span class="contact-note">
-        Вхід з двору • за попереднім записом
+        ${siteData.contact.addressNote} • за попереднім записом
       </span>
 
-      <a href="tel:+380666488763" class="contact-phone">
-        066 64 88 763
+      <a href="${siteData.contact.phoneLink}" class="contact-phone">
+        ${siteData.contact.phone}
       </a>
 
       <a
-        href="https://t.me/DrPotocki"
+        href="${siteData.contact.telegram}"
         class="contact-telegram"
         target="_blank"
         rel="noopener noreferrer"
@@ -464,7 +465,7 @@ document.querySelector('#app').innerHTML = `
       </a>
 
       <div class="contact-socials">
-        <a href="https://www.facebook.com/dr.Alex.Potocki"
+        <a href="${siteData.contact.facebook}"
            target="_blank" rel="noopener noreferrer"
            aria-label="Facebook" title="Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -472,7 +473,7 @@ document.querySelector('#app').innerHTML = `
           </svg>
         </a>
 
-        <a href="https://www.instagram.com/dr.potocki/"
+        <a href="${siteData.contact.instagram}"
            target="_blank" rel="noopener noreferrer"
            aria-label="Instagram" title="Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -482,7 +483,7 @@ document.querySelector('#app').innerHTML = `
           </svg>
         </a>
 
-        <a href="https://www.tiktok.com/@dr.alex.potocki"
+        <a href="${siteData.contact.tiktok}"
            target="_blank" rel="noopener noreferrer"
            aria-label="TikTok" title="TikTok">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -500,7 +501,7 @@ document.querySelector('#app').innerHTML = `
 
       <div class="contact-map">
         <iframe
-          src="https://www.google.com/maps?q=вул.%20Незалежності,%2038,%20Івано-Франківськ&output=embed"
+          src="${siteData.contact.mapEmbed}"
           title="Карта проїзду до кабінету"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -512,7 +513,7 @@ document.querySelector('#app').innerHTML = `
   </div>
 </section>
 
-<!-- Вікно з відеоінструкцією -->
+<!-- Окно с видеоинструкцией -->
 <div class="video-modal" id="video-modal" aria-hidden="true">
   <div class="video-modal-backdrop" id="close-video-backdrop"></div>
 
@@ -524,13 +525,15 @@ document.querySelector('#app').innerHTML = `
     </button>
 
     <div class="video-frame">
-      <iframe
-        id="video-iframe"
-        src=""
-        title="Відеоінструкція, як дістатися до кабінету"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+      <video
+        id="location-video"
+        controls
+        playsinline
+        preload="metadata"
+        aria-label="Відеоінструкція, як дістатися до кабінету">
+        <source src="/video/location.mp4" type="video/mp4">
+        Ваш браузер не підтримує відтворення відео.
+      </video>
     </div>
   </div>
 </div>
@@ -565,4 +568,47 @@ navigation.querySelectorAll('a').forEach((link) => {
     menuToggle.setAttribute('aria-expanded', 'false')
     menuToggle.setAttribute('aria-label', 'Відкрити меню')
   })
+})
+
+// =====================================
+// Відеоінструкція: відкриття та закриття
+// =====================================
+
+const openVideoButton = document.getElementById('open-video')
+const videoModal = document.getElementById('video-modal')
+const closeVideoButton = document.getElementById('close-video')
+const closeVideoBackdrop = document.getElementById('close-video-backdrop')
+const locationVideo = document.getElementById('location-video')
+
+// Відкриття модального вікна
+function openVideoModal() {
+  videoModal.classList.add('is-open')
+  videoModal.setAttribute('aria-hidden', 'false')
+
+  locationVideo.currentTime = 0
+
+  locationVideo.play().catch((error) => {
+    console.log('Автоматичне відтворення не вдалося:', error)
+  })
+}
+
+// Закриття модального вікна
+function closeVideoModal() {
+  videoModal.classList.remove('is-open')
+  videoModal.setAttribute('aria-hidden', 'true')
+
+  locationVideo.pause()
+  locationVideo.currentTime = 0
+}
+
+// Обробники кнопок
+openVideoButton.addEventListener('click', openVideoModal)
+closeVideoButton.addEventListener('click', closeVideoModal)
+closeVideoBackdrop.addEventListener('click', closeVideoModal)
+
+// Закриття клавішею Escape
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && videoModal.classList.contains('is-open')) {
+    closeVideoModal()
+  }
 })
