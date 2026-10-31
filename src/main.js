@@ -1,5 +1,7 @@
 import './style.css'
 import { siteData } from './data/siteData.js'
+import { initMenu } from './scripts/menu.js'
+import { initVideoModal } from './scripts/video.js'
 
 async function loadComponent(path) {
   const response = await fetch(path)
@@ -547,68 +549,6 @@ document.querySelector('#app').innerHTML = `
 ${footerHTML}
 `
 
-const menuToggle = document.querySelector('.menu-toggle')
-const navigation = document.querySelector('.main-navigation')
+initMenu()
 
-menuToggle.addEventListener('click', () => {
-  const isOpen = menuToggle.getAttribute('aria-expanded') === 'true'
-
-  menuToggle.setAttribute('aria-expanded', String(!isOpen))
-  menuToggle.setAttribute(
-    'aria-label',
-    isOpen ? 'Відкрити меню' : 'Закрити меню'
-  )
-
-  navigation.classList.toggle('is-open', !isOpen)
-})
-
-navigation.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    navigation.classList.remove('is-open')
-    menuToggle.setAttribute('aria-expanded', 'false')
-    menuToggle.setAttribute('aria-label', 'Відкрити меню')
-  })
-})
-
-// =====================================
-// Відеоінструкція: відкриття та закриття
-// =====================================
-
-const openVideoButton = document.getElementById('open-video')
-const videoModal = document.getElementById('video-modal')
-const closeVideoButton = document.getElementById('close-video')
-const closeVideoBackdrop = document.getElementById('close-video-backdrop')
-const locationVideo = document.getElementById('location-video')
-
-// Відкриття модального вікна
-function openVideoModal() {
-  videoModal.classList.add('is-open')
-  videoModal.setAttribute('aria-hidden', 'false')
-
-  locationVideo.currentTime = 0
-
-  locationVideo.play().catch((error) => {
-    console.log('Автоматичне відтворення не вдалося:', error)
-  })
-}
-
-// Закриття модального вікна
-function closeVideoModal() {
-  videoModal.classList.remove('is-open')
-  videoModal.setAttribute('aria-hidden', 'true')
-
-  locationVideo.pause()
-  locationVideo.currentTime = 0
-}
-
-// Обробники кнопок
-openVideoButton.addEventListener('click', openVideoModal)
-closeVideoButton.addEventListener('click', closeVideoModal)
-closeVideoBackdrop.addEventListener('click', closeVideoModal)
-
-// Закриття клавішею Escape
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && videoModal.classList.contains('is-open')) {
-    closeVideoModal()
-  }
-})
+initVideoModal()

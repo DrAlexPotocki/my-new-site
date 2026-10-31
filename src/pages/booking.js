@@ -1,5 +1,7 @@
 import '../style.css'
 import { siteData } from '../data/siteData.js'
+import { initMenu } from '../scripts/menu.js'
+import { initVideoModal } from '../scripts/video.js'
 
 // Загружаем общие компоненты сайта
 async function loadComponent(path) {
@@ -108,17 +110,19 @@ document.querySelector('#app').innerHTML = `
           </div>
 
           <div class="booking-map-card">
-          <a
-                class="booking-video-button"
-                href="/#contact"
+                <button
+                    type="button"
+                    class="booking-video-button"
+                    id="open-video"
                 >
-                <span class="booking-video-icon">▶</span>
-                <span>
+                    <span class="booking-video-icon">▶</span>
+                    <span>
                     <strong>Відеоінструкція</strong>
                     <small>Як дістатися до кабінету</small>
-                </span>
-          </a>
-            <h2>Як мене знайти</h2>
+                    </span>
+                </button>
+
+             <h2>Як мене знайти</h2>
 
             <p>
               Кабінет знаходиться на вулиці Незалежності, 38.
@@ -152,4 +156,43 @@ document.querySelector('#app').innerHTML = `
   </main>
 
   ${footerHTML}
+
+<!-- Відеоінструкція -->
+<div class="video-modal" id="video-modal" aria-hidden="true">
+  <div class="video-modal-backdrop" id="close-video-backdrop"></div>
+
+  <div
+    class="video-modal-content"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Відеоінструкція"
+  >
+    <button
+      type="button"
+      class="video-modal-close"
+      id="close-video"
+      aria-label="Закрити відео"
+    >
+      &times;
+    </button>
+
+    <div class="video-frame">
+      <video
+        id="location-video"
+        controls
+        playsinline
+        preload="metadata"
+        aria-label="Відеоінструкція, як дістатися до кабінету"
+      >
+        <source src="/video/location.mp4" type="video/mp4">
+        Ваш браузер не підтримує відтворення відео.
+      </video>
+    </div>
+  </div>
+</div>
 `
+
+initMenu()
+
+initVideoModal()
+
