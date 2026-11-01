@@ -2210,3 +2210,798 @@ button {
 .booking-detail-link:hover p {
   color: var(--color-primary, #39745C);
 }
+
+/* ========================================
+   СТОРІНКА «З ЧИМ Я ПРАЦЮЮ»
+======================================== */
+
+.conditions-page {
+  background: #F7F8F6;
+  color: #182522;
+}
+
+.conditions-container {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* Вступний блок */
+
+.conditions-intro {
+  padding: 100px 0 85px;
+  background: #E8F0EC;
+}
+
+.conditions-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.conditions-intro h1 {
+  max-width: 800px;
+  margin: 0 0 24px;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.conditions-intro p {
+  max-width: 720px;
+  margin: 0;
+  color: #53615C;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Основний контент */
+
+.conditions-content {
+  padding: 90px 0;
+}
+
+.conditions-heading {
+  max-width: 700px;
+  margin-bottom: 42px;
+}
+
+.conditions-heading h2 {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.conditions-heading p {
+  margin: 0;
+  color: #68736E;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Картки напрямів */
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.condition-card {
+  min-height: 235px;
+  padding: 30px;
+  background: #FFFFFF;
+  border: 1px solid #DDE5E0;
+  border-radius: 12px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.condition-card:hover {
+  transform: translateY(-4px);
+  border-color: #176B63;
+  box-shadow: 0 12px 30px rgba(24, 37, 34, 0.07);
+}
+
+.condition-number {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #176B63;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.condition-card h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.condition-card p {
+  margin: 0;
+  color: #68736E;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* Інформаційне застереження */
+
+.conditions-note {
+  margin-top: 35px;
+  padding: 24px 28px;
+  background: #E8F0EC;
+  border-left: 3px solid #176B63;
+  border-radius: 4px 10px 10px 4px;
+}
+
+.conditions-note p {
+  margin: 0;
+  color: #53615C;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.conditions-note strong {
+  color: #182522;
+}
+
+/* Заклик до запису */
+
+.conditions-cta {
+  padding: 75px 0;
+  background: #182522;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.conditions-cta h2 {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+}
+
+.conditions-cta p {
+  max-width: 600px;
+  margin: 0 auto 24px;
+  color: #C5D0CB;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.conditions-phone {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 25px;
+  color: #FFFFFF;
+  font-size: 25px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.conditions-button {
+  display: inline-block;
+  padding: 15px 28px;
+  background: #176B63;
+  border: 1px solid #176B63;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.conditions-button:hover {
+  background: #218078;
+}
+
+/* Адаптація для планшетів */
+
+@media (max-width: 900px) {
+  .conditions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .conditions-intro {
+    padding: 75px 0 65px;
+  }
+
+  .conditions-content {
+    padding: 70px 0;
+  }
+}
+
+/* Адаптація для телефонів */
+
+@media (max-width: 600px) {
+  .conditions-container {
+    width: min(100% - 36px, 1120px);
+  }
+
+  .conditions-intro {
+    padding: 60px 0 50px;
+  }
+
+  .conditions-intro p {
+    font-size: 16px;
+  }
+
+  .conditions-content {
+    padding: 55px 0;
+  }
+
+  .conditions-heading {
+    margin-bottom: 28px;
+  }
+
+  .conditions-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .condition-card {
+    min-height: auto;
+    padding: 25px;
+  }
+
+  .condition-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.condition-card-more {
+  display: inline-block;
+  margin-top: 20px;
+  color: #176B63;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+  .condition-number {
+    margin-bottom: 16px;
+  }
+
+  .conditions-note {
+    margin-top: 25px;
+    padding: 20px;
+  }
+
+  .conditions-cta {
+    padding: 55px 0;
+  }
+}
+
+/* ========================================
+   СТОРІНКА «МІЖХРЕБЦЕВІ ГРИЖІ»
+======================================== */
+
+.hernias-page {
+  background: #F7F8F6;
+  color: #182522;
+}
+
+.hernias-container {
+  width: min(100% - 48px, 1120px);
+  margin: 0 auto;
+}
+
+/* Вступний блок */
+
+.hernias-intro {
+  padding: 100px 0 90px;
+  background: #E8F0EC;
+}
+
+.hernias-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.hernias-intro h1 {
+  max-width: 850px;
+  margin: 0 0 24px;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.hernias-intro > .hernias-container > p {
+  max-width: 720px;
+  margin: 0 0 32px;
+  color: #53615C;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Кнопки */
+
+.hernias-button {
+  display: inline-block;
+  padding: 15px 28px;
+  background: #176B63;
+  border: 1px solid #176B63;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.hernias-button:hover {
+  background: #218078;
+}
+
+/* Текстові секції */
+
+.hernias-section {
+  padding: 80px 0;
+}
+
+.hernias-section-alt {
+  background: #E8F0EC;
+}
+
+.hernias-text {
+  max-width: 850px;
+}
+
+.hernias-text h2,
+.hernias-cta h2 {
+  margin: 0 0 24px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.hernias-text > p,
+.hernias-cta > p {
+  margin: 0 0 18px;
+  color: #53615C;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Симптоми */
+
+.hernias-symptoms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.hernias-symptom {
+  display: flex;
+  gap: 20px;
+  padding: 26px;
+  background: #FFFFFF;
+  border: 1px solid #DDE5E0;
+  border-radius: 10px;
+}
+
+.hernias-symptom > span {
+  flex-shrink: 0;
+  color: #176B63;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hernias-symptom h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.hernias-symptom p {
+  margin: 0;
+  color: #68736E;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Попередження */
+
+.hernias-warning {
+  padding: 55px 0;
+  background: #F1E9E5;
+  border-top: 1px solid #E4D7D0;
+  border-bottom: 1px solid #E4D7D0;
+}
+
+.hernias-warning h2 {
+  max-width: 850px;
+  margin: 0 0 18px;
+  color: #593B32;
+  font-size: clamp(25px, 3.5vw, 34px);
+  line-height: 1.3;
+}
+
+.hernias-warning p {
+  max-width: 900px;
+  margin: 0;
+  color: #684E44;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Заклик до запису */
+
+.hernias-cta {
+  max-width: 800px;
+  text-align: center;
+}
+
+.hernias-cta .hernias-eyebrow {
+  margin-bottom: 18px;
+}
+
+.hernias-cta > p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+.hernias-phone {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 25px;
+  color: #176B63;
+  font-size: 26px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Адаптація для планшетів */
+
+@media (max-width: 800px) {
+  .hernias-intro {
+    padding: 75px 0 65px;
+  }
+
+  .hernias-section {
+    padding: 65px 0;
+  }
+
+  .hernias-symptoms {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Адаптація для телефонів */
+
+@media (max-width: 600px) {
+  .hernias-container {
+    width: min(100% - 36px, 1120px);
+  }
+
+  .hernias-intro {
+    padding: 60px 0 50px;
+  }
+
+  .hernias-intro > .hernias-container > p {
+    font-size: 16px;
+  }
+
+  .hernias-section {
+    padding: 50px 0;
+  }
+
+  .hernias-text > p {
+    font-size: 15px;
+  }
+
+  .hernias-symptoms {
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .hernias-symptom {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .hernias-warning {
+    padding: 40px 0;
+  }
+
+  .hernias-warning p {
+    font-size: 14px;
+  }
+
+  .hernias-phone {
+    font-size: 23px;
+  }
+}
+
+/* ========================================
+   СТОРІНКА «ПРОТРУЗІЇ МІЖХРЕБЦЕВИХ ДИСКІВ»
+======================================== */
+
+.protrusions-page {
+  background: #F7F8F6;
+  color: #182522;
+}
+
+.protrusions-container {
+  width: min(100% - 48px, 1120px);
+  margin: 0 auto;
+}
+
+/* Вступний блок */
+
+.protrusions-intro {
+  padding: 100px 0 90px;
+  background: #E8F0EC;
+}
+
+.protrusions-eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.protrusions-intro h1 {
+  max-width: 900px;
+  margin: 0 0 24px;
+  font-size: clamp(38px, 6vw, 64px);
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.protrusions-intro > .protrusions-container > p {
+  max-width: 720px;
+  margin: 0 0 32px;
+  color: #53615C;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+/* Кнопки */
+
+.protrusions-button {
+  display: inline-block;
+  padding: 15px 28px;
+  background: #176B63;
+  border: 1px solid #176B63;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.protrusions-button:hover {
+  background: #218078;
+}
+
+/* Основні секції */
+
+.protrusions-section {
+  padding: 80px 0;
+}
+
+.protrusions-section-alt {
+  background: #E8F0EC;
+}
+
+.protrusions-text {
+  max-width: 850px;
+}
+
+.protrusions-text h2,
+.protrusions-cta h2 {
+  margin: 0 0 24px;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.protrusions-text > p,
+.protrusions-cta > p {
+  margin: 0 0 18px;
+  color: #53615C;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Симптоми */
+
+.protrusions-symptoms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 35px;
+}
+
+.protrusions-symptom {
+  display: flex;
+  gap: 20px;
+  padding: 26px;
+  background: #FFFFFF;
+  border: 1px solid #DDE5E0;
+  border-radius: 10px;
+}
+
+.protrusions-symptom > span {
+  flex-shrink: 0;
+  color: #176B63;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.protrusions-symptom h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.protrusions-symptom p {
+  margin: 0;
+  color: #68736E;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Порівняння протрузії та грижі */
+
+.protrusions-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 30px 0;
+}
+
+.protrusions-comparison article {
+  padding: 28px;
+  background: #FFFFFF;
+  border: 1px solid #DDE5E0;
+  border-radius: 10px;
+}
+
+.protrusions-comparison h3 {
+  margin: 0 0 12px;
+  color: #176B63;
+  font-size: 21px;
+}
+
+.protrusions-comparison p {
+  margin: 0;
+  color: #68736E;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Попередження */
+
+.protrusions-warning {
+  padding: 55px 0;
+  background: #F1E9E5;
+  border-top: 1px solid #E4D7D0;
+  border-bottom: 1px solid #E4D7D0;
+}
+
+.protrusions-warning h2 {
+  max-width: 850px;
+  margin: 0 0 18px;
+  color: #593B32;
+  font-size: clamp(25px, 3.5vw, 34px);
+  line-height: 1.3;
+}
+
+.protrusions-warning p {
+  max-width: 900px;
+  margin: 0;
+  color: #684E44;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* Заклик до запису */
+
+.protrusions-cta {
+  max-width: 800px;
+  text-align: center;
+}
+
+.protrusions-cta > p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+}
+
+.protrusions-phone {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 25px;
+  color: #176B63;
+  font-size: 26px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Планшети */
+
+@media (max-width: 800px) {
+  .protrusions-intro {
+    padding: 75px 0 65px;
+  }
+
+  .protrusions-section {
+    padding: 65px 0;
+  }
+
+  .protrusions-symptoms,
+  .protrusions-comparison {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Телефони */
+
+@media (max-width: 600px) {
+  .protrusions-container {
+    width: min(100% - 36px, 1120px);
+  }
+
+  .protrusions-intro {
+    padding: 60px 0 50px;
+  }
+
+  .protrusions-intro > .protrusions-container > p {
+    font-size: 16px;
+  }
+
+  .protrusions-section {
+    padding: 50px 0;
+  }
+
+  .protrusions-text > p {
+    font-size: 15px;
+  }
+
+  .protrusions-symptoms {
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .protrusions-symptom,
+  .protrusions-comparison article {
+    padding: 20px;
+  }
+
+  .protrusions-symptom {
+    gap: 15px;
+  }
+
+  .protrusions-warning {
+    padding: 40px 0;
+  }
+
+  .protrusions-warning p {
+    font-size: 14px;
+  }
+
+  .protrusions-phone {
+    font-size: 23px;
+  }
+}
+
