@@ -1,5 +1,6 @@
 import '../style.css'
 import { siteData } from '../data/siteData.js'
+import { conditionsData } from '../data/conditionsData.js'
 import { initMenu } from '../scripts/menu.js'
 
 // Завантажуємо спільні компоненти сайту
@@ -15,6 +16,38 @@ async function loadComponent(path) {
 
 const headerHTML = await loadComponent('/src/components/Header.html')
 const footerHTML = await loadComponent('/src/components/Footer.html')
+
+// Формуємо картки напрямів
+function renderConditions() {
+  return conditionsData
+    .map((condition, index) => {
+      const number = String(index + 1).padStart(2, '0')
+
+      const cardContent = `
+        <span class="condition-number">${number}</span>
+        <h3>${condition.title}</h3>
+        <p>${condition.description}</p>
+        ${
+          condition.url
+            ? '<span class="condition-card-more">Детальніше →</span>'
+            : ''
+        }
+      `
+
+      return condition.url
+        ? `
+          <a href="${condition.url}" class="condition-card condition-card-link">
+            ${cardContent}
+          </a>
+        `
+        : `
+          <article class="condition-card">
+            ${cardContent}
+          </article>
+        `
+    })
+    .join('')
+}
 
 // Формуємо сторінку «З чим я працюю»
 document.querySelector('#app').innerHTML = `
@@ -51,75 +84,7 @@ document.querySelector('#app').innerHTML = `
         </div>
 
         <div class="conditions-grid">
-
-          <a href="/hernias.html" class="condition-card condition-card-link">
-            <span class="condition-number">04</span>
-            <h3>Міжхребцеві грижі</h3>
-            <p>
-                Робота з проявами міжхребцевих гриж, зокрема болем
-                у спині, попереку та поширенням болю в руку або ногу.
-                Можливість застосування мануальної терапії визначається
-                індивідуально після оцінки стану пацієнта.
-            </p>
-            <span class="condition-card-more">Детальніше →</span>
-         </a>
-
-
-          <article class="condition-card">
-            <span class="condition-number">02</span>
-            <h3>Біль у шиї та головний біль</h3>
-            <p>
-              Обмеження рухливості шиї, напруження м'язів,
-              дискомфорт у потилиці та головний біль.
-            </p>
-          </article>
-
-          <article class="condition-card">
-            <span class="condition-number">03</span>
-            <h3>Біль з поширенням у руку чи ногу</h3>
-            <p>
-              Біль, поколювання або оніміння, що поширюються
-              від хребта до кінцівок.
-            </p>
-          </article>
-
-          <article class="condition-card">
-            <span class="condition-number">04</span>
-            <h3>Проблеми із суглобами</h3>
-            <p>
-              Дискомфорт у плечах, кульшових, колінних
-              та інших суглобах, обмеження їхньої рухливості.
-            </p>
-          </article>
-
-           <article class="condition-card">
-            <span class="condition-number">05</span>
-            <h3>Протрузії міжхребцевих дисків</h3>
-            <p>
-                Робота з больовими проявами, пов'язаними з протрузіями
-                міжхребцевих дисків. Підхід до кожного випадку
-                визначається індивідуально після оцінки стану пацієнта.
-            </p>
-          </article>
-
-          <article class="condition-card">
-            <span class="condition-number">06</span>
-            <h3>Порушення постави</h3>
-            <p>
-              Сутулість, посилення грудного кіфозу,
-              м'язовий дисбаланс та нерівномірне навантаження.
-            </p>
-          </article>
-
-          <article class="condition-card">
-            <span class="condition-number">07</span>
-            <h3>Обмеження рухливості</h3>
-            <p>
-              Скутість у спині, шиї та кінцівках,
-              зменшення амплітуди рухів і відчуття скутості.
-            </p>
-          </article>
-
+          ${renderConditions()}
         </div>
 
         <div class="conditions-note">

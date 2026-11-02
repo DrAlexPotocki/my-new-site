@@ -2,6 +2,80 @@ import './style.css'
 import { siteData } from './data/siteData.js'
 import { initMenu } from './scripts/menu.js'
 import { initVideoModal } from './scripts/video.js'
+import { conditionsData } from './data/conditionsData.js'
+import { articlesData } from './data/articlesData.js'
+
+function renderProblemCards() {
+  // Перемешиваем карточки случайным образом
+  const shuffled = [...conditionsData]
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+
+  // Разбиваем карточки на группы по 4
+  const groups = []
+
+  for (let i = 0; i < shuffled.length; i += 4) {
+    const group = shuffled.slice(i, i + 4)
+
+    // Заполняем последнюю неполную группу карточками из начала
+    let nextIndex = 0
+
+    while (group.length < 4) {
+      group.push(shuffled[nextIndex])
+      nextIndex++
+    }
+
+    groups.push(group)
+  }
+
+  return groups.map((group) => `
+    <div class="problem-slide">
+      <div class="problems-grid">
+        ${group.map((condition) => {
+          const content = `
+            <div>
+              <h3>${condition.title}</h3>
+              <p>${condition.description}</p>
+            </div>
+            <span class="problem-arrow">↗</span>
+          `
+
+          return condition.url
+            ? `<a href="${condition.url}" class="problem-card">${content}</a>`
+            : `<article class="problem-card">${content}</article>`
+        }).join('')}
+      </div>
+    </div>
+  `).join('')
+}
+
+function renderLatestArticles() {
+  return [...articlesData]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3)
+    .map((article) => {
+      const [topic, ...subtitleParts] = article.title.split(':')
+      const subtitle = subtitleParts.join(':').trim()
+
+      return `
+        <a href="${article.url}" class="material-card">
+          <div class="material-image">
+            <span>${topic.trim()}</span>
+          </div>
+
+          <div class="material-content">
+            <h3>${subtitle || topic.trim()}</h3>
+            <p>${article.description}</p>
+            <span>Читати статтю ↗</span>
+          </div>
+        </a>
+      `
+    })
+    .join('')
+}
 
 async function loadComponent(path) {
   const response = await fetch(path)
@@ -126,40 +200,14 @@ document.querySelector('#app').innerHTML = `
       </p>
     </div>
 
-    <div class="problems-grid">
-
-  <a href="/bil-u-spyni/" class="problem-card">
-    <div>
-      <h3>Біль у спині</h3>
-      <p>Поперек, грудний та шийний відділи</p>
+    <div class="problems-carousel">
+      <div class="problems-carousel-window" id="problems-carousel">
+        <div class="problems-carousel-track">
+          ${renderProblemCards()}
+        </div>
+      </div>
     </div>
-    <span class="problem-arrow">↗</span>
-  </a>
 
-  <a href="/bil-u-shyi/" class="problem-card">
-    <div>
-      <h3>Біль у шиї</h3>
-      <p>Скутість, дискомфорт, головний біль</p>
-    </div>
-    <span class="problem-arrow">↗</span>
-  </a>
-
-  <a href="/viddaye-v-ruku-chy-nohu/" class="problem-card">
-    <div>
-      <h3>Віддає в руку чи ногу</h3>
-      <p>Оніміння, простріли, поколювання</p>
-    </div>
-    <span class="problem-arrow">↗</span>
-  </a>
-
-  <a href="/obmezhennya-ruhlyvosti/" class="problem-card">
-    <div>
-      <h3>Обмеження рухливості</h3>
-      <p>Складно нахилятися, повертатися, ходити</p>
-    </div>
-    <span class="problem-arrow">↗</span>
-  </a>
-</div>
   </div>
 </section>
 
@@ -177,8 +225,12 @@ document.querySelector('#app').innerHTML = `
       </h2>
 
       <p class="about-preview-description">
-        Коротке представлення: освіта, досвід, підхід до роботи та принципи,
-        якими керуюся під час консультації.
+        Я — Алєксандр Потоцький, лікар мануальний терапевт.
+        У своїй роботі приділяю увагу не лише ділянці болю,
+        а й загальному стану опорно-рухового апарату.
+        Для мене важливо зрозуміти причину скарг, пояснити
+        пацієнту можливі варіанти допомоги та підібрати
+        індивідуальний підхід до кожної ситуації.
       </p>
 
       <a href="/pro-likarya/" class="about-preview-button">
@@ -382,33 +434,16 @@ document.querySelector('#app').innerHTML = `
       Пояснюю складне просто.
     </h2>
 
-    <div class="materials-grid">
-
-      <a href="/yak-pidhotuvatysya-do-konsultatsiyi/" class="material-card">
-        <div class="material-image"></div>
-        <div class="material-content">
-          <h3>Як підготуватися до консультації</h3>
-          <span>Читати статтю →</span>
-        </div>
-      </a>
-
-      <a href="/ruhlyvist-shyyi/" class="material-card">
-        <div class="material-image"></div>
-        <div class="material-content">
-          <h3>Рухливість шиї: що варто знати</h3>
-          <span>Читати статтю →</span>
-        </div>
-      </a>
-
-      <a href="/bil-u-popereku/" class="material-card">
-        <div class="material-image"></div>
-        <div class="material-content">
-          <h3>Біль у попереку: перші кроки</h3>
-          <span>Читати статтю →</span>
-        </div>
-      </a>
-
+   <div class="materials-grid">
+        ${renderLatestArticles()}
     </div>
+
+      <div class="materials-all">
+        <a href="/articles.html" class="materials-all-link">
+          Усі статті
+          <span>↗</span>
+        </a>
+      </div>
 
   </div>
 </section>
@@ -543,12 +578,77 @@ document.querySelector('#app').innerHTML = `
 
 
 
-
 </main>
 
 ${footerHTML}
 `
 
+
+
+function initProblemsCarousel() {
+  const carousel = document.querySelector('#problems-carousel')
+  const track = carousel?.querySelector('.problems-carousel-track')
+
+  if (!carousel || !track) return
+
+  const originalSlides = [...track.querySelectorAll('.problem-slide')]
+
+  if (originalSlides.length < 2) return
+
+  // Копируем первый слайд для бесконечного перехода
+  const firstClone = originalSlides[0].cloneNode(true)
+  track.appendChild(firstClone)
+
+  let currentIndex = 0
+  let isResetting = false
+
+  function getIndex() {
+    return Math.round(carousel.scrollLeft / carousel.clientWidth)
+  }
+
+  carousel.addEventListener('scroll', () => {
+    if (isResetting) return
+
+    currentIndex = getIndex()
+
+    // Если дошли до копии первого слайда — незаметно возвращаемся в начало
+    if (currentIndex === originalSlides.length) {
+      isResetting = true
+
+      setTimeout(() => {
+        carousel.scrollTo({
+          left: 0,
+          behavior: 'instant',
+        })
+
+        currentIndex = 0
+        isResetting = false
+      }, 400)
+    }
+  })
+
+  // Автоматическое переключение каждые 5 секунд
+  setInterval(() => {
+    if (document.hidden || isResetting) return
+
+    currentIndex++
+
+    carousel.scrollTo({
+      left: currentIndex * carousel.clientWidth,
+      behavior: 'smooth',
+    })
+  }, 5000)
+
+  // Корректируем положение после изменения ширины экрана
+  window.addEventListener('resize', () => {
+    carousel.scrollTo({
+      left: currentIndex * carousel.clientWidth,
+      behavior: 'instant',
+    })
+  })
+}
+
+initProblemsCarousel()
 initMenu()
 
 initVideoModal()
