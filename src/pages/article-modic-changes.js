@@ -41,6 +41,7 @@ async function loadPage() {
         </div>
       </section>
 
+    <section class="article-content-section">
       <div class="article-container">
         <div class="article-layout">
 
@@ -631,6 +632,7 @@ async function loadPage() {
 
         </div>
       </div>
+      </section>
 
     </main>
 

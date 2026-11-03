@@ -4,6 +4,9 @@ import { initMenu } from './scripts/menu.js'
 import { initVideoModal } from './scripts/video.js'
 import { conditionsData } from './data/conditionsData.js'
 import { articlesData } from './data/articlesData.js'
+import { initConditionsCarousel } from './scripts/conditionsCarousel.js'
+import { imageSettings } from './data/imageSettings.js'
+import { aboutImageSettings } from './data/aboutImageSettings.js'
 
 function renderProblemCards() {
   // Перемешиваем карточки случайным образом
@@ -53,8 +56,19 @@ function renderProblemCards() {
 }
 
 function renderLatestArticles() {
-  return [...articlesData]
-    .sort((a, b) => b.id - a.id)
+  const shuffledArticles = [...articlesData]
+
+  // Перемешиваем статьи в случайном порядке
+  for (let i = shuffledArticles.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffledArticles[i], shuffledArticles[j]] = [
+      shuffledArticles[j],
+      shuffledArticles[i],
+    ]
+  }
+
+  // Берём первые три случайные статьи
+  return shuffledArticles
     .slice(0, 3)
     .map((article) => {
       const [topic, ...subtitleParts] = article.title.split(':')
@@ -116,47 +130,28 @@ document.querySelector('#app').innerHTML = `
         </p>
 
         <div class="hero-actions">
-          <a href="#appointment" class="hero-button">
+          <a href="/booking.html" class="hero-button">
             Записатися на прийом
           </a>
 
-          <a href="#process" class="hero-secondary-link">
+          <a href="/yak-prohodyt-pryiom.html" class="hero-secondary-link">
             Як проходить прийом →
           </a>
         </div>
       </div>
 
       <div class="hero-visual">
-        <svg
-          class="hero-spine"
-          viewBox="0 0 200 400"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            d="M105 25 C65 85 135 115 100 175 S130 275 90 375"
-            fill="none"
-            stroke="#176B63"
-            stroke-width="5"
-            stroke-linecap="round"
-            opacity=".55"
+          <img
+            class="hero-photo"
+            src="${imageSettings.hero.src}"
+            alt="Лікар Алєксандр Потоцький"
+            style="
+              object-fit: ${imageSettings.hero.fit};
+              object-position: ${imageSettings.hero.positionX}% ${imageSettings.hero.positionY}%;
+              transform: scale(${imageSettings.hero.scale});
+            "
           />
-
-          <g fill="#FFFFFF" stroke="#A9C4B7" stroke-width="2">
-            <path d="M100 45 Q65 25 55 48 Q75 68 100 58 Q125 68 145 48 Q135 25 100 45Z"/>
-            <path d="M100 90 Q65 70 55 93 Q75 113 100 103 Q125 113 145 93 Q135 70 100 90Z"/>
-            <path d="M100 135 Q65 115 55 138 Q75 158 100 148 Q125 158 145 138 Q135 115 100 135Z"/>
-            <path d="M100 180 Q65 160 55 183 Q75 203 100 193 Q125 203 145 183 Q135 160 100 180Z"/>
-            <path d="M100 225 Q65 205 55 228 Q75 248 100 238 Q125 248 145 228 Q135 205 100 225Z"/>
-            <path d="M100 270 Q65 250 55 273 Q75 293 100 283 Q125 293 145 273 Q135 250 100 270Z"/>
-            <path d="M100 315 Q65 295 55 318 Q75 338 100 328 Q125 338 145 318 Q135 295 100 315Z"/>
-          </g>
-        </svg>
-
-        <span class="hero-visual-caption">
-          Візуальний образ / фото лікаря
-        </span>
-      </div>
+        </div>
 
     </div>
 
@@ -233,16 +228,22 @@ document.querySelector('#app').innerHTML = `
         індивідуальний підхід до кожної ситуації.
       </p>
 
-      <a href="/pro-likarya/" class="about-preview-button">
+      <a href="/pro-likarya.html" class="about-preview-button">
         Більше про лікаря
       </a>
     </div>
 
-      <a href="/pro-likarya/" class="about-preview-photo">
-        <div class="about-preview-photo-label">
-          <span>ФОТО ЛІКАРЯ</span>
-          <span>портрет / робочий момент</span>
-        </div>
+      <a href="/pro-likarya.html" class="about-preview-photo">
+        <img
+          class="about-preview-image"
+          src="${aboutImageSettings.src}"
+          alt="Лікар Алєксандр Потоцький"
+          style="
+            object-fit: ${aboutImageSettings.fit};
+            object-position: ${aboutImageSettings.positionX}% ${aboutImageSettings.positionY}%;
+            transform: scale(${aboutImageSettings.scale});
+          "
+        />
       </a>
 
   </div>
@@ -259,24 +260,24 @@ document.querySelector('#app').innerHTML = `
     </p>
 
     <div class="methods-grid">
-      <a href="/manualna-terapiya/" class="method-card">
+      <a href="/manualna-terapiya.html" class="method-card">
         <span class="method-number">НАПРЯМ 01</span>
         <h3>Мануальна терапія</h3>
-        <p>Робота з рухливістю та функцією</p>
+        <p>Робота з рухливістю, функцією та станом опорно-рухового апарату</p>
         <span class="method-link">Дізнатися більше →</span>
       </a>
 
-      <a href="/myakotkannynni-tehniky/" class="method-card">
+      <a href="/myakotkannynni-tehniky.html" class="method-card">
         <span class="method-number">НАПРЯМ 02</span>
         <h3>М’якотканинні техніки</h3>
-        <p>Робота з м’язами та напруженням</p>
+        <p>Робота з м’язовим напруженням і болем, зокрема коли вони супроводжують порушення роботи нервової системи</p>
         <span class="method-link">Дізнатися більше →</span>
       </a>
 
-      <a href="/rekomendatsiyi-ta-vpravy/" class="method-card">
+      <a href="/rekomendatsiyi-ta-vpravy.html" class="method-card">
         <span class="method-number">НАПРЯМ 03</span>
         <h3>Рекомендації й вправи</h3>
-        <p>Підтримка змін у повсякденні</p>
+        <p>Корекція повсякденних звичок, положень тіла та рухових патернів</p>
         <span class="method-link">Дізнатися більше →</span>
       </a>
     </div>
@@ -585,70 +586,13 @@ ${footerHTML}
 
 
 
-function initProblemsCarousel() {
-  const carousel = document.querySelector('#problems-carousel')
-  const track = carousel?.querySelector('.problems-carousel-track')
+initConditionsCarousel({
+  viewportSelector: '#problems-carousel',
+  trackSelector: '.problems-carousel-track',
+  slideSelector: '.problem-slide',
+})
 
-  if (!carousel || !track) return
 
-  const originalSlides = [...track.querySelectorAll('.problem-slide')]
-
-  if (originalSlides.length < 2) return
-
-  // Копируем первый слайд для бесконечного перехода
-  const firstClone = originalSlides[0].cloneNode(true)
-  track.appendChild(firstClone)
-
-  let currentIndex = 0
-  let isResetting = false
-
-  function getIndex() {
-    return Math.round(carousel.scrollLeft / carousel.clientWidth)
-  }
-
-  carousel.addEventListener('scroll', () => {
-    if (isResetting) return
-
-    currentIndex = getIndex()
-
-    // Если дошли до копии первого слайда — незаметно возвращаемся в начало
-    if (currentIndex === originalSlides.length) {
-      isResetting = true
-
-      setTimeout(() => {
-        carousel.scrollTo({
-          left: 0,
-          behavior: 'instant',
-        })
-
-        currentIndex = 0
-        isResetting = false
-      }, 400)
-    }
-  })
-
-  // Автоматическое переключение каждые 5 секунд
-  setInterval(() => {
-    if (document.hidden || isResetting) return
-
-    currentIndex++
-
-    carousel.scrollTo({
-      left: currentIndex * carousel.clientWidth,
-      behavior: 'smooth',
-    })
-  }, 5000)
-
-  // Корректируем положение после изменения ширины экрана
-  window.addEventListener('resize', () => {
-    carousel.scrollTo({
-      left: currentIndex * carousel.clientWidth,
-      behavior: 'instant',
-    })
-  })
-}
-
-initProblemsCarousel()
 initMenu()
 
 initVideoModal()

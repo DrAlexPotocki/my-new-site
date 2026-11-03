@@ -1,6 +1,6 @@
 import '../style.css'
-import { siteData } from '../data/siteData.js'
 import { initMenu } from '../scripts/menu.js'
+import { loadArticleCTA } from '../scripts/articleCTA.js'
 
 const app = document.querySelector('#app')
 
@@ -257,28 +257,18 @@ async function loadPage() {
             </ul>
           </article>
 
-          <aside class="article-sidebar">
-            <div class="article-sidebar-card">
-              <span class="articles-eyebrow">ПОТРІБНА КОНСУЛЬТАЦІЯ?</span>
-              <h2>Розберімося у вашій ситуації</h2>
-              <p>
-                Якщо вас турбує біль у спині або шиї, важливо з'ясувати
-                можливі причини та підібрати індивідуальну тактику допомоги.
-              </p>
-              <a class="article-button" href="${siteData.contact.phoneLink}">
-                Зателефонувати
-              </a>
-            </div>
-          </aside>
+          <aside class="article-sidebar" id="article-cta"></aside>
+
         </div>
       </section>
 
-      <div id="article-cta"></div>
+      
     </main>
 
     ${footer}
   `
 
+  await loadArticleCTA()
   initMenu()
 }
 

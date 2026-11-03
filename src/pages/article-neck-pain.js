@@ -345,7 +345,7 @@ async function loadPage() {
 
           </article>
 
-          <div id="article-cta"></div>
+          <aside class="article-sidebar" id="article-cta"></aside>
 
         </div>
       </section>

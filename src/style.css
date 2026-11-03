@@ -40,8 +40,9 @@ button {
   width: 100%;
   background: #FFFFFF;
   border-bottom: 1px solid var(--color-border);
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-container {
@@ -65,20 +66,14 @@ button {
   flex-shrink: 0;
 }
 
-.logo-mark {
+.logo-image {
+  display: block;
   width: 46px;
   height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-  background: var(--color-green);
-  color: #FFFFFF;
-
-  font-family: 'Manrope', sans-serif;
-  font-size: 25px;
-  font-weight: 700;
+  max-width: 46px;
+  max-height: 46px;
+  object-fit: contain;
+  flex: 0 0 46px;
 }
 
 .logo-text {
@@ -216,11 +211,13 @@ button {
     padding: 0 16px;
   }
 
-  .logo-mark {
-    width: 40px;
-    height: 40px;
+  .logo-image {
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  flex-basis: 40px;
   }
-
   .logo-name {
     font-size: 15px;
   }
@@ -230,13 +227,6 @@ button {
   }
 }
 
-@media (max-width: 700px) {
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-}
 
 /* =========================
    HERO SECTION
@@ -332,6 +322,17 @@ button {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .hero-spine {
@@ -691,11 +692,10 @@ button {
 
 .about-preview-photo {
   width: 100%;
-  height: 320px;
+  height: auto;
   border-radius: 14px;
   background: #D5E2DB;
 
-  display: flex;
   align-items: center;
   justify-content: center;
 
@@ -703,6 +703,19 @@ button {
   color: inherit;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+.about-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-preview-photo:hover {
@@ -770,8 +783,10 @@ button {
   }
 
   .about-preview-photo {
-    height: 120px;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
   }
 
   .about-preview-button {
@@ -4437,7 +4452,7 @@ button {
 
 .article-sidebar {
   position: sticky;
-  top: 30px;
+  top: 110px;
 }
 
 .article-sidebar-card {
@@ -4691,3 +4706,994 @@ button {
   scroll-snap-align: start;
 }
 
+/* =========================================
+   СТОРІНКА ПРО ЛІКАРЯ
+========================================= */
+
+.doctor-page {
+  background: #F7F8F6;
+  color: #182522;
+}
+
+.doctor-container {
+  width: min(1090px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.doctor-intro {
+  padding: 75px 0;
+  background: #E8F0EC;
+}
+
+.doctor-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.doctor-eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  color: #176B63;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.doctor-hero h1 {
+  max-width: 600px;
+  margin: 0 0 24px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.15;
+}
+
+.doctor-lead {
+  max-width: 570px;
+  margin: 0 0 15px;
+  color: #53615B;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.doctor-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 0 25px;
+  border-radius: 6px;
+  background: #176B63;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.doctor-button:hover {
+  background: #12564F;
+}
+
+.doctor-photo {
+  min-height: 440px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #D5E3DC;
+}
+
+.doctor-photo img {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+}
+
+.doctor-approach {
+  padding: 85px 0;
+}
+
+.doctor-approach h2,
+.doctor-education h2,
+.doctor-final h2 {
+  max-width: 650px;
+  margin: 0 0 20px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(27px, 3vw, 36px);
+  line-height: 1.25;
+}
+
+.doctor-section-lead {
+  max-width: 680px;
+  margin: 0;
+  color: #66736F;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.doctor-principles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 45px;
+}
+
+.doctor-principle {
+  padding: 28px;
+  border: 1px solid #DDE5E0;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+
+.doctor-principle span {
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.doctor-principle h3 {
+  margin: 20px 0 12px;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+}
+
+.doctor-principle p {
+  margin: 0;
+  color: #66736F;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.doctor-education {
+  padding: 75px 0;
+  background: #E8F0EC;
+}
+
+.doctor-education-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.doctor-education-note {
+  padding: 30px;
+  border-radius: 12px;
+  background: #FFFFFF;
+}
+
+.doctor-education-note p {
+  margin: 0 0 15px;
+  color: #66736F;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.doctor-education-note p:last-child {
+  margin-bottom: 0;
+}
+
+.doctor-final {
+  padding: 65px 0;
+  background: #176B63;
+  color: #FFFFFF;
+}
+
+.doctor-final-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.doctor-final .doctor-eyebrow {
+  color: #C5DED3;
+}
+
+.doctor-final h2 {
+  max-width: 600px;
+  margin-bottom: 12px;
+}
+
+.doctor-final p {
+  max-width: 550px;
+  margin: 0;
+  color: #E0ECE7;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.doctor-final .doctor-button {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  color: #176B63;
+}
+
+@media (max-width: 700px) {
+  .doctor-intro {
+    padding: 40px 0;
+  }
+
+  .doctor-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .doctor-hero h1 {
+    font-size: 30px;
+  }
+
+  .doctor-lead {
+    font-size: 14px;
+  }
+
+  .doctor-photo {
+    min-height: 300px;
+  }
+
+  .doctor-photo img {
+    height: 300px;
+  }
+
+  .doctor-approach {
+    padding: 55px 0;
+  }
+
+  .doctor-principles {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .doctor-principle {
+    padding: 22px;
+  }
+
+  .doctor-education {
+    padding: 50px 0;
+  }
+
+  .doctor-education-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .doctor-education-note {
+    padding: 22px;
+  }
+
+  .doctor-final {
+    padding: 45px 0;
+  }
+
+  .doctor-final-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .doctor-final .doctor-button {
+    margin-top: 0;
+  }
+}
+
+/* =========================================
+   СТОРІНКА «МАНУАЛЬНА ТЕРАПІЯ»
+========================================= */
+
+.manual-page {
+  background: #F7F8F6;
+  color: #182522;
+}
+
+.manual-container {
+  width: min(1090px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.manual-intro {
+  padding: 75px 0;
+  background: #E8F0EC;
+}
+
+.manual-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.manual-eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  color: #176B63;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.7px;
+}
+
+.manual-hero h1,
+.manual-section h2,
+.manual-final h2 {
+  max-width: 720px;
+  margin: 0 0 22px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.2;
+}
+
+.manual-hero-content > p,
+.manual-section-lead {
+  max-width: 680px;
+  color: #5D6963;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.manual-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 18px;
+  padding: 0 25px;
+  border-radius: 6px;
+  background: #176B63;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.manual-button:hover {
+  background: #12564F;
+}
+
+.manual-hero-visual {
+  display: flex;
+  min-height: 390px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  border-radius: 12px;
+  background: #DDE9E2;
+}
+
+.manual-hero-visual svg {
+  display: block;
+  width: min(100%, 280px);
+  height: 320px;
+}
+
+.manual-hero-visual span {
+  color: #53615B;
+  font-size: 11px;
+  text-align: center;
+}
+
+.manual-section {
+  padding: 80px 0;
+}
+
+.manual-section-alt {
+  background: #E8F0EC;
+}
+
+.manual-section h2 {
+  font-size: clamp(27px, 3vw, 36px);
+}
+
+.manual-section-lead {
+  margin: 0 0 15px;
+}
+
+.manual-conditions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 38px;
+}
+
+.manual-condition {
+  padding: 27px;
+  border: 1px solid #DDE5E0;
+  border-radius: 10px;
+  background: #FFFFFF;
+}
+
+.manual-condition > span,
+.manual-step > span {
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.manual-condition h3,
+.manual-step h3 {
+  margin: 15px 0 10px;
+  font-family: "Manrope", sans-serif;
+  font-size: 18px;
+}
+
+.manual-condition p,
+.manual-step p {
+  margin: 0;
+  color: #66736F;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.manual-disclaimer {
+  max-width: 850px;
+  margin: 25px 0 0;
+  color: #66736F;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.manual-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 40px;
+  margin-top: 40px;
+}
+
+.manual-step {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #DDE5E0;
+}
+
+.manual-step > span {
+  padding-top: 3px;
+}
+
+.manual-step h3 {
+  margin-top: 0;
+}
+
+.manual-note {
+  max-width: 900px;
+  padding: 30px;
+  border: 1px solid #DDE5E0;
+  border-radius: 10px;
+  background: #FFFFFF;
+}
+
+.manual-note p {
+  margin: 0 0 16px;
+  color: #5D6963;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.manual-note p:last-child {
+  margin-bottom: 0;
+}
+
+.manual-final {
+  padding: 65px 0;
+  background: #176B63;
+  color: #FFFFFF;
+}
+
+.manual-final-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.manual-final .manual-eyebrow {
+  color: #C5DED3;
+}
+
+.manual-final h2 {
+  margin-bottom: 12px;
+  font-size: clamp(27px, 3vw, 36px);
+}
+
+.manual-final p {
+  max-width: 580px;
+  margin: 0;
+  color: #E0ECE7;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.manual-final .manual-button {
+  flex-shrink: 0;
+  background: #FFFFFF;
+  color: #176B63;
+}
+
+@media (max-width: 700px) {
+  .manual-intro {
+    padding: 45px 0;
+  }
+
+  .manual-hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .manual-hero h1 {
+    font-size: 31px;
+  }
+
+  .manual-hero-content > p,
+  .manual-section-lead {
+    font-size: 14px;
+  }
+
+  .manual-hero-visual {
+    min-height: 300px;
+  }
+
+  .manual-hero-visual svg {
+    height: 250px;
+  }
+
+  .manual-section {
+    padding: 55px 0;
+  }
+
+  .manual-conditions,
+  .manual-steps {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .manual-condition {
+    padding: 23px;
+  }
+
+  .manual-step {
+    gap: 15px;
+  }
+
+  .manual-note {
+    padding: 23px;
+  }
+
+  .manual-final {
+    padding: 45px 0;
+  }
+
+  .manual-final-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .manual-final .manual-button {
+    margin-top: 0;
+  }
+}
+
+/* ДОДАТКОВІ ЕЛЕМЕНТИ ОСВІТИ ЛІКАРЯ */
+
+.doctor-education-note {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.doctor-education-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 18px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dde5e0;
+}
+
+.doctor-education-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.doctor-education-number {
+  color: #176b63;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.doctor-education-item h3 {
+  margin: 0 0 9px;
+  color: #182522;
+  font-family: 'Manrope', sans-serif;
+  font-size: 19px;
+}
+
+.doctor-education-item p {
+  margin: 0;
+  color: #53615b;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+@media (max-width: 600px) {
+  .doctor-education-item {
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+  }
+}
+
+/* СТАЖ РОБОТИ ЛІКАРЯ */
+
+.doctor-experience {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 30px;
+  padding: 20px 24px;
+  max-width: 480px;
+  border-left: 3px solid #176b63;
+  background: #e8f0ec;
+  border-radius: 0 10px 10px 0;
+}
+
+.doctor-experience-number {
+  color: #176b63;
+  font-family: 'Manrope', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.doctor-experience div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.doctor-experience strong {
+  color: #182522;
+  font-size: 15px;
+}
+
+.doctor-experience div span {
+  color: #53615b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .doctor-experience {
+    padding: 17px;
+    gap: 14px;
+  }
+
+  .doctor-experience-number {
+    font-size: 36px;
+  }
+}
+
+/* ========================================
+   ПРОФЕСІЙНИЙ ДОСВІД ЛІКАРЯ
+======================================== */
+
+.doctor-career {
+  padding: 85px 0;
+  background: #f7f8f6;
+}
+
+.doctor-career-heading {
+  max-width: 720px;
+  margin-bottom: 45px;
+}
+
+.doctor-career-heading h2 {
+  margin: 0 0 20px;
+  color: #182522;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.25;
+}
+
+.doctor-career-heading .doctor-section-lead {
+  margin: 0;
+}
+
+.doctor-career-timeline {
+  max-width: 760px;
+  margin-left: 8px;
+  padding-left: 30px;
+  border-left: 2px solid #cbdcd3;
+}
+
+.doctor-career-point {
+  position: relative;
+  padding-bottom: 38px;
+}
+
+.doctor-career-point:last-child {
+  padding-bottom: 0;
+}
+
+.doctor-career-marker {
+  position: absolute;
+  top: 3px;
+  left: -39px;
+  width: 16px;
+  height: 16px;
+  border: 4px solid #176b63;
+  border-radius: 50%;
+  background: #f7f8f6;
+}
+
+.doctor-career-date {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #176b63;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.doctor-career-content h3 {
+  margin: 0 0 10px;
+  color: #182522;
+  font-family: 'Manrope', sans-serif;
+  font-size: 21px;
+}
+
+.doctor-career-content p {
+  max-width: 650px;
+  margin: 0;
+  color: #53615b;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .doctor-career {
+    padding: 60px 0;
+  }
+
+  .doctor-career-heading {
+    margin-bottom: 35px;
+  }
+
+  .doctor-career-content h3 {
+    font-size: 18px;
+  }
+
+  .doctor-career-content p {
+    font-size: 14px;
+  }
+}
+
+/* ========================================
+   НАПРЯМИ ПРАКТИЧНОЇ РОБОТИ ЛІКАРЯ
+======================================== */
+
+.doctor-practice {
+  padding: 85px 0;
+  background: #fff;
+}
+
+.doctor-practice-heading {
+  max-width: 720px;
+  margin-bottom: 40px;
+}
+
+.doctor-practice-heading h2 {
+  margin: 0 0 20px;
+  color: #182522;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.25;
+}
+
+.doctor-practice-heading .doctor-section-lead {
+  margin: 0;
+}
+
+.doctor-practice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.doctor-practice-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 230px;
+  padding: 28px;
+  border: 1px solid #dde5e0;
+  border-radius: 12px;
+  background: #f7f8f6;
+  color: #182522;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.doctor-practice-card:hover {
+  border-color: #176b63;
+  background: #e8f0ec;
+}
+
+.doctor-practice-index {
+  margin-bottom: 22px;
+  color: #176b63;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.doctor-practice-card h3 {
+  margin: 0 0 12px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+}
+
+.doctor-practice-card p {
+  margin: 0 0 20px;
+  color: #53615b;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.doctor-practice-link {
+  margin-top: auto;
+  color: #176b63;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 650px) {
+  .doctor-practice {
+    padding: 60px 0;
+  }
+
+  .doctor-practice-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .doctor-practice-card {
+    min-height: auto;
+    padding: 23px;
+  }
+}
+
+/* Слайдер направлений работы на странице врача */
+
+.doctor-practice-carousel {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.doctor-practice-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.doctor-practice-track {
+  display: flex;
+  width: 100%;
+}
+
+.doctor-practice-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+}
+
+.doctor-practice-grid {
+  width: 100%;
+}
+
+/* Мобильная версия слайдера направлений работы */
+
+@media (max-width: 768px) {
+  .doctor-practice-carousel {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+  }
+
+  .doctor-practice-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .doctor-practice-card {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    position: relative;
+    z-index: 1001;
+    pointer-events: auto;
+  }
+}
+
+/* Пов'язані статті */
+
+.article-related {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid #DDE5E0;
+}
+
+.article-related h2 {
+  margin-bottom: 24px;
+}
+
+.article-related-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.article-related-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 20px;
+  color: #182522;
+  text-decoration: none;
+  background: #F7F8F6;
+  border: 1px solid #DDE5E0;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.article-related-card:hover {
+  border-color: #176B63;
+  background: #E8F0EC;
+}
+
+.article-related-category {
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.article-related-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.article-related-description {
+  color: #52615B;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.article-related-link {
+  margin-top: auto;
+  padding-top: 8px;
+  color: #176B63;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .article-related {
+    margin-top: 40px;
+    padding-top: 24px;
+  }
+
+  .article-related-list {
+    grid-template-columns: 1fr;
+  }
+
+  .article-related-card {
+    padding: 18px;
+  }
+}
