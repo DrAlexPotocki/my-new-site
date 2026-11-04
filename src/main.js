@@ -7,6 +7,7 @@ import { articlesData } from './data/articlesData.js'
 import { initConditionsCarousel } from './scripts/conditionsCarousel.js'
 import { imageSettings } from './data/imageSettings.js'
 import { aboutImageSettings } from './data/aboutImageSettings.js'
+import { initReviewsCarousel } from './scripts/reviews.js'
 
 function renderProblemCards() {
   // Перемешиваем карточки случайным образом
@@ -114,18 +115,18 @@ document.querySelector('#app').innerHTML = `
 
       <div class="hero-content">
         <div class="hero-eyebrow">
-          МАНУАЛЬНА ТЕРАПІЯ • ІВАНО-ФРАНКІВСЬК
+          ВЕРТЕБРАЛЬНА МАНУАЛЬНА ТЕРАПІЯ • ІВАНО-ФРАНКІВСЬК
         </div>
 
         <h1 class="hero-title">
-          Рух без страху.<br>
-          Повернення до звичного<br>
-          життя починається з уваги<br>
-          до вашого тіла.
+          Мануальна терапія<br>
+          в Івано-Франківську
         </h1>
 
         <p class="hero-description">
-          Індивідуальний підхід до болю та обмеження рухливості.<br>
+          Алєксандр Потоцький — лікар мануальної терапії.
+          Працюю зі скаргами, пов’язаними з хребтом, зокрема з болем,
+          обмеженням рухливості та поширенням болю в руку або ногу.
           Пояснюю, що відбувається, і разом визначаємо наступні кроки.
         </p>
 
@@ -253,10 +254,12 @@ document.querySelector('#app').innerHTML = `
   <div class="methods-container">
     <p class="methods-eyebrow">ПІДХІД ДО РОБОТИ</p>
 
-    <h2 class="methods-title">Методи — не меню процедур.</h2>
+    <h2 class="methods-title">Методи обираються індивідуально.</h2>
 
     <p class="methods-description">
-      Метод обирається після оцінки стану та цілей людини.
+      Спочатку я оцінюю ваш стан, скарги та можливі причини дискомфорту.
+      На основі цього визначаю, які методи допомоги будуть доцільними
+      саме у вашій ситуації.
     </p>
 
     <div class="methods-grid">
@@ -285,15 +288,21 @@ document.querySelector('#app').innerHTML = `
 </section>
 
 <section class="process-section" id="how-it-works">
-  <div class="process-container">
+  <a class="process-container process-section-link" href="/yak-prohodyt-pryiom.html">
     <p class="process-eyebrow">ЯК ЦЕ ВІДБУВАЄТЬСЯ</p>
+
+    <span class="process-more">
+      Детальніше <span aria-hidden="true">↗</span>
+    </span>
 
     <h2 class="process-title">
       <span class="process-title-desktop">
         Зрозумілий шлях від<br>
         першого звернення до плану дій.
       </span>
-      <span class="process-title-mobile">Зрозумілий шлях</span>
+      <span class="process-title-mobile">
+        Зрозумілий шлях від першого звернення до плану дій.
+      </span>
     </h2>
 
     <div class="process-steps">
@@ -321,7 +330,7 @@ document.querySelector('#app').innerHTML = `
         </p>
       </div>
     </div>
-  </div>
+  </a>
 </section>
 
 <section class="patient-info-section" id="for-patients">
@@ -336,7 +345,7 @@ document.querySelector('#app').innerHTML = `
     </h2>
 
     <div class="patient-info-grid">
-      <a href="/pershyi-vizyt/" class="patient-info-card">
+      <a href="/pershyi-vizyt.html" class="patient-info-card">
         <span class="patient-info-text-desktop">
           Чого очікувати від першого візиту
         </span>
@@ -346,84 +355,45 @@ document.querySelector('#app').innerHTML = `
         <span class="patient-info-arrow">↗</span>
       </a>
 
-      <a href="/vidchuttya-pislya-protsedury/" class="patient-info-card">
+      <a href="/pidgotovka-do-pryiomu.html" class="patient-info-card">
         <span class="patient-info-text-desktop">
-          Які відчуття можуть бути після процедури
+          Як підготуватися до прийому
         </span>
         <span class="patient-info-text-mobile">
-          Відчуття після процедури
+          Підготовка до прийому
         </span>
         <span class="patient-info-arrow">↗</span>
       </a>
 
-      <a href="/povtorna-konsultatsiya/" class="patient-info-card">
+      <a href="/mrt-pered-pryiomom.html" class="patient-info-card">
         <span class="patient-info-text-desktop">
-          Коли потрібна повторна консультація
+          Чи потрібно робити МРТ перед прийомом
         </span>
         <span class="patient-info-text-mobile">
-          Коли потрібна повторна консультація
+          Чи потрібне МРТ
         </span>
         <span class="patient-info-arrow">↗</span>
       </a>
 
-      <a href="/kilkist-vizytiv/" class="patient-info-card">
+      <a href="/protypokazannya-do-manualnoyi-terapiyi.html" class="patient-info-card">
         <span class="patient-info-text-desktop">
-          Від чого залежить кількість візитів
+          Кому не підходить мануальна терапія
         </span>
         <span class="patient-info-text-mobile">
-          Кількість візитів
+          Протипоказання
         </span>
         <span class="patient-info-arrow">↗</span>
       </a>
     </div>
+
+    <a href="/patients.html" class="patient-info-all-link">
+      Усі матеріали для пацієнтів →
+    </a>
   </div>
 </section>
 
 <section class="reviews-section" id="reviews">
-  <div class="reviews-container">
-
-    <p class="reviews-eyebrow">ВІДГУКИ</p>
-
-    <h2 class="reviews-title">
-      Досвід пацієнтів — важлива частина довіри.
-    </h2>
-
-    <p class="reviews-description">
-      Короткі відгуки пацієнтів про досвід консультації та роботи.
-    </p>
-
-    <div class="reviews-grid">
-
-      <div class="review-card">
-        <p class="review-text">
-          «Звернувся через біль у спині. Лікар уважно вислухав,
-          пояснив можливі причини дискомфорту та розповів,
-          як буде проходити робота.»
-        </p>
-        <span class="review-author">Пацієнт</span>
-      </div>
-
-      <div class="review-card">
-        <p class="review-text">
-          «Сподобався уважний підхід. Отримав відповіді на свої
-          запитання та рекомендації щодо вправ і повсякденної
-          активності.»
-        </p>
-        <span class="review-author">Пацієнтка</span>
-      </div>
-
-      <div class="review-card">
-        <p class="review-text">
-          «На консультації все було зрозуміло та без поспіху.
-          Лікар пояснив, на що звернути увагу і які наступні
-          кроки варто зробити.»
-        </p>
-        <span class="review-author">Пацієнт</span>
-      </div>
-
-    </div>
-
-  </div>
+  <div id="home-reviews"></div>
 </section>
 
 <section class="materials-section" id="materials">
@@ -596,3 +566,6 @@ initConditionsCarousel({
 initMenu()
 
 initVideoModal()
+
+
+initReviewsCarousel()

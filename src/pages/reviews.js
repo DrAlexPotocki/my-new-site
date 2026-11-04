@@ -1,6 +1,7 @@
 import '../style.css'
 import { siteData } from '../data/siteData.js'
 import { initMenu } from '../scripts/menu.js'
+import { renderAllReviews } from '../scripts/reviews.js'
 
 const app = document.querySelector('#app')
 
@@ -17,26 +18,19 @@ async function loadPage() {
       <section class="reviews-intro">
         <div class="reviews-container">
           <span class="reviews-eyebrow">ДОСВІД ПАЦІЄНТІВ</span>
+
           <h1>Відгуки</h1>
+
           <p>
-            Довіра та зворотний зв'язок пацієнтів — важлива частина
-            моєї роботи. Тут ви зможете ознайомитися з відгуками
-            людей, які вже зверталися до мене.
+            Тут зібрані відгуки людей, які поділилися своїм досвідом
+            після звернення до мене. Усі відгуки публікуються в Google.
           </p>
         </div>
       </section>
 
       <section class="reviews-section">
         <div class="reviews-container">
-          <div class="reviews-empty">
-            <span class="reviews-eyebrow">ЗВОРОТНИЙ ЗВ'ЯЗОК</span>
-            <h2>Ваш досвід має значення</h2>
-            <p>
-              Розділ відгуків готується до наповнення.
-              Незабаром тут з'являться реальні відгуки пацієнтів
-              про досвід консультацій та роботи.
-            </p>
-          </div>
+          <div class="google-reviews-list" id="all-reviews"></div>
         </div>
       </section>
 
@@ -44,16 +38,21 @@ async function loadPage() {
         <div class="reviews-container">
           <div class="reviews-cta">
             <span class="reviews-eyebrow">Є ЧИМ ПОДІЛИТИСЯ?</span>
+
             <h2>Залиште свій відгук</h2>
+
             <p>
               Якщо ви вже були на прийомі та хочете поділитися
-              своїми враженнями, буду вдячний за ваш зворотний зв'язок.
+              своїми враженнями, буду вдячний за ваш відгук у Google.
             </p>
+
             <a
               class="reviews-button"
-              href="${siteData.contact.phoneLink}"
+              href="https://g.page/r/CeBrpf1nWjetEAE/review"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Зв'язатися зі мною
+              Залишити відгук у Google
             </a>
           </div>
         </div>
@@ -63,6 +62,7 @@ async function loadPage() {
     ${footer}
   `
 
+  renderAllReviews()
   initMenu()
 }
 
