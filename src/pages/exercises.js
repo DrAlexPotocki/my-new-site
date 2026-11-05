@@ -1,5 +1,4 @@
 import '../style.css'
-import { siteData } from '../data/siteData.js'
 import { initMenu } from '../scripts/menu.js'
 
 const app = document.querySelector('#app')
@@ -38,25 +37,26 @@ async function loadPage() {
           </div>
 
           <div class="exercises-grid">
-            <article class="exercise-card">
+
+            <a href="/neck-exercises.html" class="exercise-card exercise-card-link">
               <span class="exercise-number">01</span>
               <h3>Вправи для шиї</h3>
               <p>
-                Рухливість шийного відділу, контроль рухів
-                та робота з напруженням м'язів шиї.
+                Комплекс із 10 вправ для розвитку рухливості
+                шийного відділу хребта та контролю рухів голови.
               </p>
-              <span class="exercise-status">Матеріали готуються</span>
-            </article>
+              <span class="exercise-status">Переглянути комплекс →</span>
+            </a>
 
-            <article class="exercise-card">
-              <span class="exercise-number">02</span>
-              <h3>Вправи для грудного відділу</h3>
-              <p>
-                Рухливість грудного відділу хребта,
-                повороти корпусу та рухи грудної клітки.
-              </p>
-              <span class="exercise-status">Матеріали готуються</span>
-            </article>
+            <a href="/exercises-thoracic.html" class="exercise-card exercise-card-link">
+                <span class="exercise-number">02</span>
+                <h3>Вправи для грудного відділу</h3>
+                <p>
+                    Комплекс вправ для розвитку рухливості верхньої частини
+                    грудного відділу та контролю м'язів навколо лопаток.
+                </p>
+                <span class="exercise-status">Переглянути комплекс →</span>
+            </a>
 
             <article class="exercise-card">
               <span class="exercise-number">03</span>
@@ -97,6 +97,7 @@ async function loadPage() {
               </p>
               <span class="exercise-status">Матеріали готуються</span>
             </article>
+
           </div>
         </div>
       </section>

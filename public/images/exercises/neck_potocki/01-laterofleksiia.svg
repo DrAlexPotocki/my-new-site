@@ -1,0 +1,142 @@
+<div class="exercise-lateroflexion">
+  <svg
+    class="lateroflexion-svg"
+    viewBox="0 0 400 420"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="Боковые наклоны головы и шеи"
+  >
+    <!-- Неподвижный корпус -->
+    <g class="body">
+      <path
+        d="M132 270
+           C110 276 91 291 78 314
+           C62 342 57 377 55 410
+           L345 410
+           C343 377 338 342 322 314
+           C309 291 290 276 268 270
+           L239 253 L161 253 Z"
+        fill="#E8F0EC"
+        stroke="#263B36"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+
+      <!-- Линия плеч -->
+      <path
+        d="M132 270 C153 283 174 289 200 289
+           C226 289 247 283 268 270"
+        fill="none"
+        stroke="#263B36"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+
+      <!-- Ключицы -->
+      <path
+        d="M200 289 C181 281 164 276 145 276
+           M200 289 C219 281 236 276 255 276"
+        fill="none"
+        stroke="#78958A"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+
+      <!-- Центральная линия корпуса -->
+      <path
+        d="M200 290 L200 410"
+        fill="none"
+        stroke="#B2C8BD"
+        stroke-width="1.5"
+      />
+    </g>
+
+    <!-- Голова и шея двигаются как единая анатомическая структура -->
+    <g class="head-neck">
+
+      <!-- Шея -->
+      <path
+        d="M169 155
+           C172 180 170 208 161 253
+           C173 263 187 267 200 267
+           C213 267 227 263 239 253
+           C230 208 228 180 231 155 Z"
+        fill="#E8F0EC"
+        stroke="#263B36"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+
+      <!-- Контуры мышц шеи -->
+      <path
+        d="M174 178 C179 205 184 230 190 255
+           M226 178 C221 205 216 230 210 255"
+        fill="none"
+        stroke="#78958A"
+        stroke-width="2.2"
+        stroke-linecap="round"
+      />
+
+      <!-- Голова -->
+      <path
+        d="M200 43
+           C163 43 140 70 140 111
+           C140 145 153 169 174 184
+           C182 191 190 195 200 195
+           C210 195 218 191 226 184
+           C247 169 260 145 260 111
+           C260 70 237 43 200 43 Z"
+        fill="#F7F8F6"
+        stroke="#263B36"
+        stroke-width="3"
+      />
+
+      <!-- Уши -->
+      <path
+        d="M141 116 C128 106 125 127 139 143
+           M259 116 C272 106 275 127 261 143"
+        fill="#E8F0EC"
+        stroke="#263B36"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+
+      <!-- Глаза -->
+      <path
+        d="M169 112 Q181 105 192 112
+           M208 112 Q219 105 231 112"
+        fill="none"
+        stroke="#263B36"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+
+      <!-- Нос -->
+      <path
+        d="M200 112 L197 137 Q200 141 204 137"
+        fill="none"
+        stroke="#78958A"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+
+      <!-- Рот -->
+      <path
+        d="M190 154 Q200 160 210 154"
+        fill="none"
+        stroke="#78958A"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+
+      <!-- Подбородок -->
+      <path
+        d="M182 179 Q200 187 218 179"
+        fill="none"
+        stroke="#78958A"
+        stroke-width="1.5"
+        stroke-linecap="round"
+      />
+    </g>
+  </svg>
+</div>
