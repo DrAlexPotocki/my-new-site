@@ -4,26 +4,46 @@ export function initMenu() {
 
   if (!menuToggle || !navigation) return
 
-  // Відкриття та закриття мобільного меню
+  // Закриття мобільного меню
+  function closeMenu() {
+    navigation.classList.remove('is-open')
+    menuToggle.setAttribute('aria-expanded', 'false')
+    menuToggle.setAttribute('aria-label', 'Відкрити меню')
+  }
+
+  // Відкриття та закриття меню кнопкою
   menuToggle.addEventListener('click', () => {
     const isOpen = menuToggle.getAttribute('aria-expanded') === 'true'
 
-    menuToggle.setAttribute('aria-expanded', String(!isOpen))
-    menuToggle.setAttribute(
-      'aria-label',
-      isOpen ? 'Відкрити меню' : 'Закрити меню'
-    )
-
-    navigation.classList.toggle('is-open', !isOpen)
+    if (isOpen) {
+      closeMenu()
+    } else {
+      menuToggle.setAttribute('aria-expanded', 'true')
+      menuToggle.setAttribute('aria-label', 'Закрити меню')
+      navigation.classList.add('is-open')
+    }
   })
 
   // Закриття меню після переходу за посиланням
   navigation.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      navigation.classList.remove('is-open')
-      menuToggle.setAttribute('aria-expanded', 'false')
-      menuToggle.setAttribute('aria-label', 'Відкрити меню')
-    })
+    link.addEventListener('click', closeMenu)
+  })
+
+  // Закриття меню при натисканні поза ним
+  document.addEventListener('click', (event) => {
+    const clickedInsideMenu = navigation.contains(event.target)
+    const clickedToggle = menuToggle.contains(event.target)
+
+    if (!clickedInsideMenu && !clickedToggle) {
+      closeMenu()
+    }
+  })
+
+  // Закриття меню клавішею Escape
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu()
+    }
   })
 
   // Автоматичне визначення активного пункту меню

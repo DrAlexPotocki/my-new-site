@@ -4718,7 +4718,8 @@ button {
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  touch-action: pan-x;
+  touch-action: auto;
+  overscroll-behavior-x: contain;
 }
 
 .problems-carousel-window::-webkit-scrollbar {
@@ -6810,3 +6811,255 @@ button {
     margin: 16px 0 20px;
   }
 }
+
+/* =========================================
+   404 — СТОРІНКУ НЕ ЗНАЙДЕНО
+========================================= */
+
+.not-found-page {
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #F7F8F6;
+  color: #182522;
+}
+
+.not-found-container {
+  position: relative;
+  width: min(100% - 48px, 1120px);
+  min-height: 560px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.not-found-content {
+  position: relative;
+  z-index: 2;
+  max-width: 620px;
+  padding: 80px 0;
+}
+
+.not-found-label {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #176B63;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.not-found-number {
+  margin-left: -8px;
+  color: #176B63;
+  font-size: clamp(120px, 19vw, 210px);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -12px;
+  opacity: 0.12;
+}
+
+.not-found-content h1 {
+  margin: -8px 0 18px;
+  color: #182522;
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.not-found-description {
+  max-width: 490px;
+  margin: 0;
+  color: #65716D;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.not-found-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 34px;
+}
+
+.not-found-home {
+  min-height: 54px;
+  padding: 0 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-radius: 4px;
+  background: #176B63;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.not-found-home:hover {
+  background: #12564F;
+  transform: translateY(-2px);
+}
+
+.not-found-home span {
+  font-size: 19px;
+}
+
+.not-found-back {
+  padding: 12px 0;
+  border: none;
+  background: transparent;
+  color: #176B63;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.not-found-back:hover {
+  color: #182522;
+}
+
+/* Декоративні елементи */
+
+.not-found-decoration {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 390px;
+  height: 390px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.not-found-circle {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(23, 107, 99, 0.12);
+  border-radius: 50%;
+}
+
+.not-found-circle-one {
+  inset: 0;
+}
+
+.not-found-circle-two {
+  inset: 45px;
+  background: rgba(232, 240, 236, 0.45);
+}
+
+.not-found-cross {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  transform: translate(-50%, -50%);
+  opacity: 0.65;
+}
+
+.not-found-cross span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  background: #176B63;
+  border-radius: 3px;
+  transform: translate(-50%, -50%);
+}
+
+.not-found-cross span:first-child {
+  width: 100px;
+  height: 2px;
+}
+
+.not-found-cross span:last-child {
+  width: 2px;
+  height: 100px;
+}
+
+/* Адаптація */
+
+@media (max-width: 900px) {
+  .not-found-page {
+    min-height: 540px;
+  }
+
+  .not-found-container {
+    min-height: 500px;
+  }
+
+  .not-found-decoration {
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    opacity: 0.6;
+  }
+
+  .not-found-content {
+    max-width: 570px;
+  }
+}
+
+@media (max-width: 600px) {
+  .not-found-page {
+    min-height: 500px;
+  }
+
+  .not-found-container {
+    width: min(100% - 40px, 1120px);
+    min-height: 480px;
+  }
+
+  .not-found-content {
+    padding: 65px 0;
+  }
+
+  .not-found-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+  }
+
+  .not-found-number {
+    margin-left: -4px;
+    font-size: 130px;
+    letter-spacing: -8px;
+  }
+
+  .not-found-content h1 {
+    margin-top: 0;
+    font-size: 30px;
+  }
+
+  .not-found-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .not-found-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .not-found-home {
+    min-height: 50px;
+    width: 100%;
+  }
+
+  .not-found-decoration {
+    top: 35%;
+    right: -160px;
+    width: 260px;
+    height: 260px;
+    opacity: 0.35;
+  }
+}
+
