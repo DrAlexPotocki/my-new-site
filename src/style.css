@@ -7063,3 +7063,18 @@ button {
   }
 }
 
+/* Защита изображений от перетаскивания */
+img,
+svg {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Защита изображений упражнений от перетаскивания */
+.neck-exercise-figure img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto;
+}

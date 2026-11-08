@@ -1,4 +1,22 @@
 export function initMenu() {
+      // Защита изображений от копирования мышкой
+  if (!document.documentElement.dataset.imageProtection) {
+    document.documentElement.dataset.imageProtection = 'true'
+
+    document.addEventListener('contextmenu', (event) => {
+      if (event.target.closest?.('img, svg')) {
+        event.preventDefault()
+      }
+    }, true)
+
+    document.addEventListener('dragstart', (event) => {
+      if (event.target.closest?.('img, svg')) {
+        event.preventDefault()
+      }
+    }, true)
+  }
+
+  
   const menuToggle = document.querySelector('.menu-toggle')
   const navigation = document.querySelector('.main-navigation')
 

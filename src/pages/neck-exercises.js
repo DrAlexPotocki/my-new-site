@@ -370,18 +370,12 @@ function renderExercise(exercise) {
       </h3>
 
       <figure class="neck-exercise-figure">
-        <a
-          href="${imagePath}"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Відкрити зображення: ${exercise.title}"
-        >
-          <img
-            src="${imagePath}"
-            alt="${exercise.alt}"
-            loading="lazy"
-          />
-        </a>
+        <img
+          src="${imagePath}"
+          alt="${exercise.alt}"
+          loading="lazy"
+          draggable="false"
+        />
       </figure>
 
       <div class="neck-exercise-instructions">
