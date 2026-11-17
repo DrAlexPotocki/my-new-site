@@ -8,6 +8,47 @@ export default function copyFetchComponents() {
   return {
     name: 'vite-plugin-copy-fetch-components',
 
+
+        transformIndexHtml: {
+      order: 'post',
+
+      handler(html, ctx) {
+        const page = ctx.path.split('?')[0].replace(/^\/+/, '')
+
+        // Страница 404 не должна индексироваться
+        if (page === '404.html') {
+          return [
+            {
+              tag: 'meta',
+              attrs: {
+                name: 'robots',
+                content: 'noindex, nofollow',
+              },
+              injectTo: 'head',
+            },
+          ]
+        }
+
+        // Формируем адрес страницы
+        const canonicalPath =
+          page === 'index.html' ? '/' : `/${page}`
+
+        const canonicalUrl =
+          `https://potocki.if.ua${canonicalPath}`
+
+        return [
+          {
+            tag: 'link',
+            attrs: {
+              rel: 'canonical',
+              href: canonicalUrl,
+            },
+            injectTo: 'head',
+          },
+        ]
+      },
+    },
+
     configResolved(config) {
       root = config.root
       outDir = config.build.outDir

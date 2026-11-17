@@ -84,16 +84,16 @@ button {
 
 .logo-name {
   font-family: 'Manrope', sans-serif;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 800;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.1px;
 }
 
 .logo-caption {
   color: #71817B;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
-  letter-spacing: 1.1px;
+  letter-spacing: 0.5px;
 }
 
 /* NAVIGATION */

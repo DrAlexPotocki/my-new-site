@@ -53,6 +53,12 @@ const patientMaterials = [
     description: 'Як підтримувати рухливість, правильно дозувати навантаження та дбати про здоров’я спини.',
     url: '/profilaktyka-porushen-oporno-rukhovogo-aparatu.html',
   },
+   {
+    number: '09',
+    title: 'Моя методика роботи',
+    description: 'Як проходить процедура, які техніки я використовую та чому важливо працювати не лише з тілом, а й зі звичками.',
+    url: '/metodyka-roboty.html',
+  },
 ]
 
 async function loadPage() {
